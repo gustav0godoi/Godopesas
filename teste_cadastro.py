@@ -1,4 +1,4 @@
 from src.model.usuario_model import Usuario
 
-resultado = Usuario().cadastrar("Madonnna","Ah Idade")
+resultado = Usuario().cadastrar("Felizberta","Fefe")
 print(resultado)

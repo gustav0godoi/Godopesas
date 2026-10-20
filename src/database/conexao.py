@@ -15,7 +15,7 @@ class Conexao:
                                 database="godopesas"
                                 )
 
-            cursor = conexao.cursor()
+            cursor = conexao.cursor(dictionary=True)
 
             return conexao, cursor
         except Exception as e:

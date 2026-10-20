@@ -26,22 +26,20 @@ class Usuario:
                  print(f"ERRO AO INSERIR{e}")
                  return False
                  
-
+    @staticmethod
     def verificar(login:str, senha:str) -> dict:
         conexao, cursor = Conexao().conectar()
         if conexao == None:
             print("ERRO AO VERIFICAR")
-            return {}
+            return None
        
         cursor.execute("""
-                SELECT id_usuario, usuario, senha FROM tb_usuarios
-                WHERE login = %s
-                AND senha = %s;
-                """,
-                [login, senha])
+                    SELECT * FROM tb_usuarios
+                    WHERE login = %s
+                    AND senha = %s;
+                    """,
+                    [login, senha])
 
         resultado = cursor.fetchone()
-
         conexao.close()
-
         return resultado
