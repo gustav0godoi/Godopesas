@@ -1,23 +1,47 @@
 import flet as ft
+from src.model.usuario_model import Usuario
 
 class CadastroUsuarioView(ft.View):
-    def __init__(self, pg:ft.Page):
+    def __init__(self, paginag:ft.Page):
         super().__init__()
 
-    def main(page:ft.Page):
-        page.title = "GodoPesas!!"
-        page.bgcolor = "#FFFFFF" 
-        page.window.height = 700 
-        page.window.width = 800 
-        page.horizontal_alignment = "center"
+        self.bgcolor = "#facada"
+        self.vertical_alignment = "CENTER"
+        self.horizontal_alignment = "CENTER"
 
-        titulo = ft.Text(value = "Cadastro do Usuário",
+        titulo = ft.Text(value="Cadastro de usuario",
+                        font_family="Times New Roman",
                         size=40,
-                        font_family= "Times New Roman",
-                        color= "#000000")
+                        color= "#ffffff")
 
+        self.campo_usuario = ft.TextField(label= "Usuário")
+        self.campo_senha = ft.TextField(label="Senha",
+                                   password= True,
+                                   can_reveal_password=True)
 
-        page.controls = [titulo               
-                     ]
-        page.update()
-    ft.run(main)
+        botao_cadastrar = ft.Button(content="Cadastrar-se",
+                                    width=150,
+                                    color="#000000",
+                                    on_click=self.cadastrar
+                                    )
+
+        botao_voltar = ft.Button(content="Voltar ao Login",
+                                    width=150,
+                                    color="#000000",
+                                    on_click=self.cadastrar
+                                    )
+
+        self.controls = [titulo,
+                         self.campo_usuario,
+                         self.campo_senha,
+                         botao_cadastrar,
+                         botao_voltar]
+
+    def cadastrar(self):
+        usuario = self.campo_usuario.value
+        senha = self.campo_senha.value
+
+        resultado = Usuario().cadastrar(usuario,senha)
+
+        if resultado == True:
+            
