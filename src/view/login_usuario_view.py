@@ -4,6 +4,7 @@ class LoginUsuarioView(ft.View):
     def __init__(self, pagina:ft.Page):
         super().__init__()
 
+        self.pagina = pagina
         
         self.route = "/login"
         

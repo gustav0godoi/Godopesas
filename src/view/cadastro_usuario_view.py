@@ -5,6 +5,8 @@ class CadastroUsuarioView(ft.View):
     def __init__(self, pagina:ft.Page):
         super().__init__()
 
+        self.pagina = pagina
+
         self.route = "/cadastro"
 
         self.bgcolor = "#facada"
@@ -31,8 +33,8 @@ class CadastroUsuarioView(ft.View):
         botao_voltar = ft.Button(content="Voltar ao Login",
                                     width=150,
                                     color="#FFFFFF",
-                                    on_click=self.cadastrar,
-                                    bgcolor="#a51966"
+                                    on_click=self.ir_login,
+                                    bgcolor="#a51966",
                                     )
 
         self.controls = [titulo,
@@ -53,3 +55,7 @@ class CadastroUsuarioView(ft.View):
         else:
             self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar!"),
                                 bgcolor="#b91414" ))
+
+
+    async def ir_login(self):
+        await self.pagina.push_route("/login")
