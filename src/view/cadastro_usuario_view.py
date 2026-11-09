@@ -2,7 +2,7 @@ import flet as ft
 from src.model.usuario_model import Usuario
 
 class CadastroUsuarioView(ft.View):
-    def __init__(self, paginag:ft.Page):
+    def __init__(self, pagina:ft.Page):
         super().__init__()
 
         self.bgcolor = "#facada"
@@ -12,7 +12,7 @@ class CadastroUsuarioView(ft.View):
         titulo = ft.Text(value="Cadastro de usuario",
                         font_family="Times New Roman",
                         size=40,
-                        color= "#ffffff")
+                        color= "#a51966")
 
         self.campo_usuario = ft.TextField(label= "Usuário")
         self.campo_senha = ft.TextField(label="Senha",
@@ -21,14 +21,16 @@ class CadastroUsuarioView(ft.View):
 
         botao_cadastrar = ft.Button(content="Cadastrar-se",
                                     width=150,
-                                    color="#000000",
-                                    on_click=self.cadastrar
+                                    color="#ffffff",
+                                    on_click=self.cadastrar,
+                                    bgcolor= "#a51966"
                                     )
 
         botao_voltar = ft.Button(content="Voltar ao Login",
                                     width=150,
-                                    color="#000000",
-                                    on_click=self.cadastrar
+                                    color="#FFFFFF",
+                                    on_click=self.cadastrar,
+                                    bgcolor="#a51966"
                                     )
 
         self.controls = [titulo,
@@ -44,4 +46,8 @@ class CadastroUsuarioView(ft.View):
         resultado = Usuario().cadastrar(usuario,senha)
 
         if resultado == True:
-            
+            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado com sucesso!"),
+                                              ))
+                                               
+        else:
+            self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar!")))
