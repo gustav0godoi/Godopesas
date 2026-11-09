@@ -5,11 +5,13 @@ class CadastroUsuarioView(ft.View):
     def __init__(self, pagina:ft.Page):
         super().__init__()
 
+        self.route = "/cadastro"
+
         self.bgcolor = "#facada"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
-        titulo = ft.Text(value="Cadastro de usuario",
+        titulo = ft.Text(value="Cadastro de usuário",
                         font_family="Times New Roman",
                         size=40,
                         color= "#a51966")
@@ -46,8 +48,8 @@ class CadastroUsuarioView(ft.View):
         resultado = Usuario().cadastrar(usuario,senha)
 
         if resultado == True:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado com sucesso!"),
-                                              ))
+            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado com sucesso!")))
                                                
         else:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar!")))
+            self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar!"),
+                                bgcolor="#b91414" ))
