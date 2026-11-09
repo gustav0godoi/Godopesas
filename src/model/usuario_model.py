@@ -27,7 +27,7 @@ class Usuario:
                  return False
                  
     @staticmethod
-    def verificar(login:str, senha:str) -> dict:
+    def Verificar(login:str, senha:str) -> dict:
         conexao, cursor = Conexao().conectar()
         if conexao == None:
             print("ERRO AO VERIFICAR")
