@@ -2,6 +2,7 @@ import flet as ft
 from src.view.cadastro_usuario_view import CadastroUsuarioView
 from src.view.login_usuario_view import LoginUsuarioView
 from src.view.cadastro_categoria_view import CadastroCategoriaView
+from src.view.cadastro_despesa_view import CadastroDespesaView
 
 def main(pagina:ft.Page):
     pagina.window.width = 800
@@ -12,7 +13,7 @@ def main(pagina:ft.Page):
         if item_clicado == 0:
             pagina.navigate("/cadastro_cat")
         elif item_clicado == 1:
-            pagina.navigate("/")
+            pagina.navigate("/cadastro_desp")
         elif item_clicado == 2:
             pagina.navigate("/")
         elif item_clicado == 3:
@@ -33,6 +34,8 @@ def main(pagina:ft.Page):
     tela_login_usuario = LoginUsuarioView(pagina)
     tela_cadastro_categoria = CadastroCategoriaView(pagina)
     tela_cadastro_categoria.navigation_bar = barra_navegacao
+    tela_cadastro_despesa = CadastroDespesaView(pagina)
+    tela_cadastro_categoria.navigation_bar = barra_navegacao 
 
     def roteamento(e=None):
         pagina.views.clear()
@@ -43,6 +46,8 @@ def main(pagina:ft.Page):
             pagina.views.append(tela_login_usuario)
         elif pagina.route == "/cadastro_cat":
             pagina.views.append(tela_cadastro_categoria)
+        elif pagina.route == "/cadastro_desp":
+            pagina.views.append(tela_cadastro_despesa)
 
         pagina.update()
 
