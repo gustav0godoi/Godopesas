@@ -18,6 +18,11 @@ class CadastroUsuarioView(ft.View):
                         size=40,
                         color= "#a51966")
 
+        titulo02 = ft.Text(value="Bem Vindo!",
+                                font_family="Times New Roman",
+                                size=20,
+                                color= "#a51966")
+
         self.campo_usuario = ft.TextField(label= "Usuário")
         self.campo_senha = ft.TextField(label="Senha",
                                    password= True,
@@ -29,8 +34,12 @@ class CadastroUsuarioView(ft.View):
                                     on_click=self.cadastrar,
                                     bgcolor= "#a51966"
                                     )
+        
+        texto01 = ft.Text(value="Já tem uma conta?",
+                                font_family="Times New Roman",
+                                color= "#a51966")
 
-        botao_voltar = ft.Button(content="Voltar ao Login",
+        botao_voltar = ft.Button(content="Realizar Login",
                                     width=150,
                                     color="#FFFFFF",
                                     on_click=self.ir_login,
@@ -38,9 +47,11 @@ class CadastroUsuarioView(ft.View):
                                     )
 
         self.controls = [titulo,
+                         titulo02,
                          self.campo_usuario,
                          self.campo_senha,
                          botao_cadastrar,
+                         texto01,
                          botao_voltar]
 
     def cadastrar(self):
@@ -50,7 +61,8 @@ class CadastroUsuarioView(ft.View):
         resultado = Usuario().cadastrar(usuario,senha)
 
         if resultado == True:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado com sucesso!")))
+            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado com sucesso!"),
+                                              bgcolor="#1f992a"))
                                                
         else:
             self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar!"),
