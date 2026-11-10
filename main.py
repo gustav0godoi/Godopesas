@@ -4,13 +4,13 @@ from src.view.login_usuario_view import LoginUsuarioView
 from src.view.cadastro_categoria_view import CadastroCategoriaView
 
 def main(pagina:ft.Page):
-    pagina.window.width = 600
-    pagina.window.height = 700
+    pagina.window.width = 800
+    pagina.window.height = 900
 
     def navegacao(e):
         item_clicado = e.control.selected_index
         if item_clicado == 0:
-            pagina.navigate("/categoria")
+            pagina.navigate("/cadastro_cat")
         elif item_clicado == 1:
             pagina.navigate("/")
         elif item_clicado == 2:
@@ -18,13 +18,14 @@ def main(pagina:ft.Page):
         elif item_clicado == 3:
             pagina.navigate("/")
         elif item_clicado == 4:
-            pagina.navigate("/")
+            pagina.navigate("/login")
 
     barra_navegacao = ft.NavigationBar(destinations=[
                                         ft.NavigationBarDestination(icon =ft.Icons.CIRCLE, label = "Categoria"),
                                         ft.NavigationBarDestination(icon =ft.Icons.ADD_BOX_OUTLINED, label = "Adicionar Despesas"),
                                         ft.NavigationBarDestination(icon =ft.Icons.DONE_ALL_ROUNDED, label = "Todas as Despesas"),
-                                        ft.NavigationBarDestination(icon =ft.Icons.EXPLORE, label = "Despesas por Categoria"),],
+                                        ft.NavigationBarDestination(icon =ft.Icons.EXPLORE, label = "Despesas por Categoria"),
+                                        ft.NavigationBarDestination(icon =ft.Icons.EXIT_TO_APP, label = "Sair"),],
                                         on_change = navegacao
     )
 
