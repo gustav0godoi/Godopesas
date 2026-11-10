@@ -64,6 +64,7 @@ class LoginUsuarioView(ft.View):
                 #função para ir para a página principal
                 self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado!"),
                                         bgcolor="#1f992a"))
+                self.pagina.session.set("usuario_logado", resultado)
                 self.pagina.navigate("/cadastro_cat")
                                                    
             else:

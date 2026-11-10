@@ -4,6 +4,7 @@ from src.view.login_usuario_view import LoginUsuarioView
 from src.view.cadastro_categoria_view import CadastroCategoriaView
 from src.view.visualizar_despesas_view import VisualizarDespesas
 from src.view.cadastro_despesa_view import CadastroDespesaView
+from src.view.
 
 def main(pagina:ft.Page):
     pagina.window.width = 800
