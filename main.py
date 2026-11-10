@@ -9,7 +9,7 @@ from src.view.despesas_categoria_view import DespesasCat
 
 def main(pagina: ft.Page):
     pagina.window.width = 900
-    pagina.window.height = 1000
+    pagina.window.height = 800
 
     def navegacao(e):
         item_clicado = e.control.selected_index
