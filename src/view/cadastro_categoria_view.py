@@ -18,6 +18,8 @@ class CadastroCategoriaView(ft.View):
                                 size=40,
                                 color= "#a51966")
 
+        
+
 
 
         
