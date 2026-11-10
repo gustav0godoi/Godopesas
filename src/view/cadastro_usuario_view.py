@@ -18,6 +18,11 @@ class CadastroUsuarioView(ft.View):
                         size=40,
                         color= "#a51966")
 
+        titulo02 = ft.Text(value="Bem Vindo!",
+                                font_family="Times New Roman",
+                                size=20,
+                                color= "#a51966")
+
         self.campo_usuario = ft.TextField(label= "Usuário")
         self.campo_senha = ft.TextField(label="Senha",
                                    password= True,
@@ -42,6 +47,7 @@ class CadastroUsuarioView(ft.View):
                                     )
 
         self.controls = [titulo,
+                         titulo02,
                          self.campo_usuario,
                          self.campo_senha,
                          botao_cadastrar,

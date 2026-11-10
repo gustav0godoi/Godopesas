@@ -17,6 +17,11 @@ class LoginUsuarioView(ft.View):
                         font_family="Times New Roman",
                         size=40,
                         color= "#a51966")
+        
+        titulo02 = ft.Text(value="Bem Vindo!",
+                                        font_family="Times New Roman",
+                                        size=20,
+                                        color= "#a51966")
 
         self.campo_usuario = ft.TextField(label= "Usuário")
         self.campo_senha = ft.TextField(label="Senha",
@@ -42,6 +47,7 @@ class LoginUsuarioView(ft.View):
                                             )
 
         self.controls = [titulo,
+                         titulo02,
                          self.campo_usuario,
                          self.campo_senha,
                          botao_login,
@@ -56,14 +62,18 @@ class LoginUsuarioView(ft.View):
     
             if resultado :  
                 #função para ir para a página principal
-                self.ir_para_principal()
+                self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado!"),
+                                        bgcolor="#1f992a"))
+                self.pagina.navigate("/cadastro_cat")
                                                    
             else:
-                self.page.show_dialog(ft.SnackBar(ft.Text("Insira as credencias para realiar o login!"),
+                self.page.show_dialog(ft.SnackBar(ft.Text("Usuário ou senha incorreta!"),
                                                   bgcolor="#b91414"))
 
     async def cadastro(self):
         await self.pagina.push_route("/cadastro")
 
-    async def ir_para_principal(self):
-         await self.pagina.push_route("/principal")
+
+    
+
+    
