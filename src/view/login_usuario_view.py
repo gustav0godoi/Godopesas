@@ -26,7 +26,8 @@ class LoginUsuarioView(ft.View):
         self.campo_usuario = ft.TextField(label= "Usuário")
         self.campo_senha = ft.TextField(label="Senha",
                                            password= True,
-                                           can_reveal_password=True)
+                                           can_reveal_password=True,
+                                           on_submit=self.Login)
 
         botao_login = ft.Button(content="Entrar",
                                             width=150,
@@ -64,8 +65,8 @@ class LoginUsuarioView(ft.View):
                 #função para ir para a página principal
                 self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado!"),
                                         bgcolor="#1f992a"))
-                self.pagina.session.set("usuario_logado", resultado)
-                self.pagina.navigate("/cadastro_cat")
+                self.pagina.session.store.set("usuario_logado", resultado)
+                self.pagina.navigate("/principal")
                                                    
             else:
                 self.page.show_dialog(ft.SnackBar(ft.Text("Usuário ou senha incorreta!"),
