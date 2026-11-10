@@ -5,6 +5,7 @@ class CadastroCategoriaView(ft.View):
         super().__init__()
 
         self.pagina = pagina
+
         
         self.route = "/cadastro_cat"
         
@@ -16,7 +17,11 @@ class CadastroCategoriaView(ft.View):
                                 font_family="Times New Roman",
                                 size=40,
                                 color= "#a51966")
+
+
+
         
-        self.controls = [titulo]
+        self.controls = [titulo,
+                        ]
 
         
