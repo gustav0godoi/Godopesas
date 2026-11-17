@@ -29,8 +29,8 @@ class CadastroCategoriaView(ft.View):
 
         self.nome_cat = ft.TextField(label="Nome da Categoria")
 
-        self.historico = []
-        self.coluna = ft.Column(controls = self.historico)
+        self.lista_categorias = []
+        self.coluna = ft.Column(controls = self.lista_categorias)
         
         self.controls = [self.titulo,
                          self.nome_cat,
@@ -39,16 +39,61 @@ class CadastroCategoriaView(ft.View):
                          self.coluna
                         ]
 
-    def adicionar(self):
+    def adicionar(self, e):
         dados_usuario = self.pagina.session.store.get("usuario_logado")
         nome_usuario = dados_usuario.get("login")
         categoria = self.nome_cat.value
-        resultado = Categoria().adicionar(categoria,nome_usuario)
+        id_categoria = Categoria.adicionar(categoria, nome_usuario)
 
-        if resultado:
-            self.historico.append(ft.Text(value = f"{categoria}",
-                                          color = "#ffffff",
-                                          size = 25))
+        if id_categoria:
+            texto = ft.Text(value=f"{categoria}", color="#ffffff", size=20)
+            historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER)
+            
+            excluir = ft.FloatingActionButton(
+                icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
+                foreground_color="#ffffff",
+                bgcolor = "#a51966",
+                width=50,
+                height=35,
+                on_click=lambda e, id_cat=id_categoria, row=historico: self.excluir(e, id_cat, row)
+            )
+            
+            historico.controls = [texto, excluir]
+            self.lista_categorias.append(historico)
+
             self.page.show_dialog(ft.SnackBar(ft.Text("Categoria cadastrada com sucesso!"),
                                         bgcolor="#1f992a"))
             self.pagina.update()
+
+    def excluir(self, e, id_categoria, linha):
+        resultado = Categoria.excluir(id_categoria)
+        
+        if resultado:
+            self.lista_categorias.remove(linha)
+            self.pagina.update()
+
+    def atualizar_lista_categorias(self):
+        dados_usuario = self.pagina.session.store.get("usuario_logado")
+        nome_usuario = dados_usuario.get("login")
+        categorias = Categoria.recuperar(nome_usuario)
+
+        for categoria in categorias:
+            nome_categoria = categoria.get("nome")
+            id_categoria = categoria.get("id_categoria")
+            
+            texto = ft.Text(value=nome_categoria, color="#ffffff")
+            historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER)
+            
+            excluir = ft.FloatingActionButton(
+                icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
+                foreground_color="#ffffff",
+                bgcolor = "#a51966",
+                width=50, 
+                height=35,
+                on_click=lambda e, id_cat=id_categoria, row=historico: self.excluir(e, id_cat, row)
+            )
+            
+            historico.controls = [texto, excluir]
+            self.lista_categorias.append(historico)
+
+        self.pagina.update()
