@@ -6,7 +6,6 @@ class CadastroCategoriaView(ft.View):
         super().__init__()
 
         self.pagina = pagina
-
         
         self.route = "/cadastro_cat"
         
@@ -16,7 +15,7 @@ class CadastroCategoriaView(ft.View):
                                 size=30,
                                 color= "#a51966")
 
-        self.texto01 = ft.Text(value="Categoria cadastrada com sucesso!",
+        self.texto01 = ft.Text(value="Categorias Cadastradas:",
                                         font_family="Times New Roman",
                                         size=30,
                                         color= "#a51966")
@@ -28,17 +27,17 @@ class CadastroCategoriaView(ft.View):
                                             on_click= self.adicionar
                                             )
 
-
         self.nome_cat = ft.TextField(label="Nome da Categoria")
 
-    
+        self.historico = []
+        self.coluna = ft.Column(controls = self.historico)
         
         self.controls = [self.titulo,
                          self.nome_cat,
                          self.botao_salvar,
-                         self.texto01
+                         self.texto01,
+                         self.coluna
                         ]
-
 
     def adicionar(self):
         dados_usuario = self.pagina.session.store.get("usuario_logado")
@@ -47,5 +46,9 @@ class CadastroCategoriaView(ft.View):
         resultado = Categoria().adicionar(categoria,nome_usuario)
 
         if resultado:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado!"),
+            self.historico.append(ft.Text(value = f"{categoria}",
+                                          color = "#ffffff",
+                                          size = 25))
+            self.page.show_dialog(ft.SnackBar(ft.Text("Categoria cadastrada com sucesso!"),
                                         bgcolor="#1f992a"))
+            self.pagina.update()
