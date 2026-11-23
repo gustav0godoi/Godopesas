@@ -79,21 +79,26 @@ class CadastroCategoriaView(ft.View):
 
         for categoria in categorias:
             nome_categoria = categoria.get("nome")
-            id_categoria = categoria.get("id_categoria")
-            
-            texto = ft.Text(value=nome_categoria, color="#ffffff")
-            historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER)
-            
-            excluir = ft.FloatingActionButton(
+            delete = ft.FloatingActionButton(
                 icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
                 foreground_color="#ffffff",
                 bgcolor = "#a51966",
                 width=50, 
                 height=35,
-                on_click=lambda e, id_cat=id_categoria, row=historico: self.excluir(e, id_cat, row)
-            )
+                key= categoria.get("id_categoria"))
             
-            historico.controls = [texto, excluir]
+            texto = ft.Text(value=nome_categoria, color="#ffffff")
+            historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER,
+                               controls=[texto, delete])
+            
+        
+            
+            historico.controls = [texto, delete]
             self.lista_categorias.append(historico)
 
         self.pagina.update()
+
+    def excluir_categoria(self,botao):
+        id_categoria = botao.control.key
+        Categoria().excluir(id_categoria)
+        self.atualizar_lista_categorias
