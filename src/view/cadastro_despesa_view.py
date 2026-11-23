@@ -20,9 +20,10 @@ class CadastroDespesaView(ft.View):
         
         self.desc = ft.TextField(label="Descrição:")
 
-        self.valor = ft.TextField(label="Valor:")
+        self.valor = ft.TextField(label="Valor:",
+                                  keyboard_type=ft.KeyboardType.NUMBER)
 
-        self.data = ft.TextField(label="Data:")
+        self.data = ft.DatePicker(label="Data:")
 
         self.botao_salvar = ft.Button(content="Salvar",
                                             width=100,
