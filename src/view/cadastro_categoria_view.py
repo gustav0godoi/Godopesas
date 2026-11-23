@@ -49,7 +49,7 @@ class CadastroCategoriaView(ft.View):
             texto = ft.Text(value=f"{categoria}", color="#ffffff", size=20)
             historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER)
             
-            excluir = ft.FloatingActionButton(
+            delete = ft.FloatingActionButton(
                 icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
                 foreground_color="#ffffff",
                 bgcolor = "#a51966",
@@ -58,7 +58,7 @@ class CadastroCategoriaView(ft.View):
                 on_click=lambda e, id_cat=id_categoria, row=historico: self.excluir(e, id_cat, row)
             )
             
-            historico.controls = [texto, excluir]
+            historico.controls = [texto, delete]
             self.lista_categorias.append(historico)
 
             self.page.show_dialog(ft.SnackBar(ft.Text("Categoria cadastrada com sucesso!"),
@@ -85,7 +85,8 @@ class CadastroCategoriaView(ft.View):
                 bgcolor = "#a51966",
                 width=50, 
                 height=35,
-                key= categoria.get("id_categoria"))
+                key= categoria.get("id_categoria"),
+                on_click=self.excluir_categoria)
             
             texto = ft.Text(value=nome_categoria, color="#ffffff")
             historico = ft.Row(alignment=ft.MainAxisAlignment.CENTER,
