@@ -27,6 +27,7 @@ class CadastroDespesaView(ft.View):
         
         self.campo_desc = ft.TextField(
                         label="Descrição",
+                        border_color= "#6495ED",
                         color="#FFFFFF",
                         label_style=ft.TextStyle(
                             color="#FFFFFF",

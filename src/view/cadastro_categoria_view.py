@@ -29,6 +29,7 @@ class CadastroCategoriaView(ft.View):
 
         self.nome_cat = ft.TextField(
                         label="Nome da Categoria",
+                        border_color= "#6495ED",
                         color="#FFFFFF",
                         label_style=ft.TextStyle(
                             color="#FFFFFF",
