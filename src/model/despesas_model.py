@@ -37,9 +37,10 @@ class Despesas:
 
         try:
             cursor.execute("""
-                SELECT id_despesas, login, id_categoria, descricao, valor, dt_cadastro
-                FROM tb_despesas
-                WHERE login = %s;
+        SELECT id_despesas, tb_despesas.login, tb_despesas.id_categoria, descricao, valor, dt_cadastro, tb_categorias.nome
+        FROM tb_despesas
+        INNER JOIN tb_categorias ON tb_categorias.id_categoria = tb_despesas.id_categoria
+                WHERE tb_despesas.login = %s;
             """, [login])
 
             despesas = cursor.fetchall()

@@ -9,41 +9,45 @@ class CadastroUsuarioView(ft.View):
 
         self.route = "/cadastro"
 
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
         titulo = ft.Text(value="Cadastro de usuário",
                         font_family="Times New Roman",
                         size=40,
-                        color= "#a51966")
+                        color= "#6495ED")
 
         titulo02 = ft.Text(value="Bem Vindo!",
                                 font_family="Times New Roman",
                                 size=20,
-                                color= "#a51966")
+                                color= "#6495ED")
 
-        self.campo_usuario = ft.TextField(label= "Usuário")
+        self.campo_usuario = ft.TextField(label= "Usuário",
+                                        border_color= "#6495ED",
+                                        color="#FFFFFF")
         self.campo_senha = ft.TextField(label="Senha",
-                                   password= True,
-                                   can_reveal_password=True)
+                                password= True,
+                                can_reveal_password=True,
+                                border_color= "#6495ED",
+                                color="#FFFFFF")
 
         botao_cadastrar = ft.Button(content="Cadastrar-se",
                                     width=150,
                                     color="#ffffff",
                                     on_click=self.cadastrar,
-                                    bgcolor= "#a51966"
+                                    bgcolor= "#6495ED"
                                     )
         
         texto01 = ft.Text(value="Já tem uma conta?",
                                 font_family="Times New Roman",
-                                color= "#a51966")
+                                color= "#6495ED")
 
         botao_voltar = ft.Button(content="Realizar Login",
                                     width=150,
                                     color="#FFFFFF",
                                     on_click=self.ir_login,
-                                    bgcolor="#a51966",
+                                    bgcolor="#6495ED",
                                     )
 
         self.controls = [titulo,

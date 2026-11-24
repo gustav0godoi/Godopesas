@@ -7,7 +7,7 @@ class DespesasCat(ft.View):
         self.pagina = pagina
         self.route = "/despesas_cat"
         
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
@@ -16,7 +16,7 @@ class DespesasCat(ft.View):
             value="Despesas com base nas categorias:",
             font_family="Times New Roman",
             size=20,
-            color="#a51966"
+            color="#6495ED"
         )
 
         self.controls = [titulo]

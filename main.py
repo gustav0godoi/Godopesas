@@ -11,8 +11,26 @@ def main(pagina: ft.Page):
     pagina.window.width = 900
     pagina.window.height = 800
 
+    pagina.theme = ft.Theme(
+    navigation_bar_theme=ft.NavigationBarTheme(
+        label_text_style={
+            ft.ControlState.DEFAULT: ft.TextStyle(
+                color="#ffffff",
+                size=12,
+                weight=ft.FontWeight.BOLD
+            ),
+            ft.ControlState.SELECTED: ft.TextStyle(
+                color="#FFFFFF",
+                size=12,
+                weight=ft.FontWeight.BOLD
+            ),
+        },
+    )
+)
+
+
     def navegacao(e):
-        item_clicado = e.control.selected_index
+        item_clicado = e.control.selected_index     
         if item_clicado == 0:
             pagina.navigate("/principal")
         if item_clicado == 1:
@@ -27,16 +45,37 @@ def main(pagina: ft.Page):
             pagina.navigate("/login")
 
     barra_navegacao = ft.NavigationBar(
-        destinations=[
-            ft.NavigationBarDestination(icon=ft.Icons.HOME_OUTLINED, label="Início"),
-            ft.NavigationBarDestination(icon=ft.Icons.CIRCLE, label="Categoria"),
-            ft.NavigationBarDestination(icon=ft.Icons.ADD_BOX_OUTLINED, label="Adicionar Despesas"),
-            ft.NavigationBarDestination(icon=ft.Icons.DONE_ALL_ROUNDED, label="Todas as Despesas"),
-            ft.NavigationBarDestination(icon=ft.Icons.EXPLORE, label="Despesas por Categoria"),
-            ft.NavigationBarDestination(icon=ft.Icons.EXIT_TO_APP, label="Sair"),
-        ],
-        on_change=navegacao
-    )
+    bgcolor="#34495E",
+    indicator_color="#34495E",
+    destinations=[
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.HOME_OUTLINED, color="#87CEFA"),
+            label="Início"
+        ),
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.CIRCLE, color="#87CEFA"),
+            label="Categoria"
+        ),
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.ADD_BOX_OUTLINED, color="#87CEFA"),
+            label="Adicionar Despesas"
+        ),
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.DONE_ALL_ROUNDED, color="#87CEFA"),
+            label="Todas as Despesas"
+        ),
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.EXPLORE, color="#87CEFA"),
+            label="Despesas por Categoria"
+        ),
+        ft.NavigationBarDestination(
+            icon=ft.Icon(ft.Icons.EXIT_TO_APP, color="#87CEFA"),
+            label="Sair"
+        ),
+    ],
+
+    on_change=navegacao
+)
 
     def roteamento(e=None):
         pagina.views.clear()
