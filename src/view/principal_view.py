@@ -19,7 +19,8 @@ class Principal(ft.View):
             value=f"Seja bem vindo(a) {nome_usuario}",
             font_family="Times New Roman",
             size=20,
-            color="#6495ED"
+            color="#6495ED",
+            weight=ft.FontWeight.BOLD
         )
 
         self.controls = [titulo]

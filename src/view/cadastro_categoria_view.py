@@ -27,9 +27,14 @@ class CadastroCategoriaView(ft.View):
                                             on_click= self.adicionar
                                             )
 
-        self.nome_cat = ft.TextField(label="Nome da Categoria",
-                                     border_color= "#6495ED",
-                                     color= "#FFFFFF")
+        self.nome_cat = ft.TextField(
+                        label="Nome da Categoria",
+                        color="#FFFFFF",
+                        label_style=ft.TextStyle(
+                            color="#FFFFFF",
+                            size=14,
+                        ),
+                    )
 
         self.lista_categorias = []
         self.coluna = ft.Column(controls = self.lista_categorias)

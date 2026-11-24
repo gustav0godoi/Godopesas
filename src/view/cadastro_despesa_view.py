@@ -25,19 +25,31 @@ class CadastroDespesaView(ft.View):
                                 size=40,
                                 color= "#6495ED")
         
-        self.campo_desc = ft.TextField(label="Descrição:",
-                                       border_color= "#6495ED",
-                                       color="#FFFFFF")
+        self.campo_desc = ft.TextField(
+                        label="Descrição",
+                        color="#FFFFFF",
+                        label_style=ft.TextStyle(
+                            color="#FFFFFF",
+                            size=14,
+                        ))
 
         self.campo_valor = ft.TextField(label="Valor:",
-                                  keyboard_type=ft.KeyboardType.NUMBER,
-                                  border_color= "#6495ED",
-                                  color="#FFFFFF")
+                                keyboard_type=ft.KeyboardType.NUMBER,
+                                border_color= "#6495ED",
+                                color="#FFFFFF",
+                                label_style=ft.TextStyle(
+                                color="#FFFFFF",
+                                size=14,
+                                ))
 
         self.campo_data = ft.TextField(label="Data:",
                                 keyboard_type=ft.KeyboardType.NUMBER,
                                 border_color= "#6495ED",
-                                color="#FFFFFF")
+                                color="#FFFFFF",
+                                label_style=ft.TextStyle(
+                                color="#FFFFFF",
+                                size=14,
+                                ))
         
         categorias = Categoria().recuperar(self.nome_usuario)
 
