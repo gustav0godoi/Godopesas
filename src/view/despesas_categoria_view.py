@@ -32,11 +32,12 @@ class DespesasCat(ft.View):
         categorias = Categoria().recuperar(self.nome_usuario)
         
         for categoria in categorias:
-                opcoes = ft.DropdownOption(key=categoria.get("id_categoria",
-                                            text =categoria.get("nome")))
+                opcoes = ft.DropdownOption(key=categoria.get("id_categoria"),
+                                            text =categoria.get("nome"))
                 opcoes_categoria.append(opcoes)
         
-        self.campo_categoria = ft.Dropdown(options=opcoes_categoria)
+        self.campo_categoria = ft.Dropdown(options=opcoes_categoria,
+                                           on_select=self.atualizar_despesas)
         
         self.lista_despesas = []
         
@@ -65,7 +66,10 @@ class DespesasCat(ft.View):
 
     def atualizar_despesas(self):
             self.lista_despesas.clear()
-            despesas = Despesas().recuperar_todos(self.nome_usuario)
+
+            id_categoria = self.campo_categoria.value
+
+            despesas = Despesas().recuperar_categoria(self.nome_usuario, id_categoria )
 
 
             for despesa in despesas:
