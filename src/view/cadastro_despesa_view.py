@@ -13,7 +13,7 @@ class CadastroDespesaView(ft.View):
         
         self.route = "/cadastro_desp"
         
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
@@ -23,15 +23,21 @@ class CadastroDespesaView(ft.View):
         titulo = ft.Text(value="Cadastre a suas despesas aqui!",
                                 font_family="Times New Roman",
                                 size=40,
-                                color= "#a51966")
+                                color= "#6495ED")
         
-        self.campo_desc = ft.TextField(label="Descrição:")
+        self.campo_desc = ft.TextField(label="Descrição:",
+                                       border_color= "#6495ED",
+                                       color="#FFFFFF")
 
         self.campo_valor = ft.TextField(label="Valor:",
-                                  keyboard_type=ft.KeyboardType.NUMBER)
+                                  keyboard_type=ft.KeyboardType.NUMBER,
+                                  border_color= "#6495ED",
+                                  color="#FFFFFF")
 
         self.campo_data = ft.TextField(label="Data:",
-                                keyboard_type=ft.KeyboardType.NUMBER)
+                                keyboard_type=ft.KeyboardType.NUMBER,
+                                border_color= "#6495ED",
+                                color="#FFFFFF")
         
         categorias = Categoria().recuperar(self.nome_usuario)
 
@@ -47,7 +53,7 @@ class CadastroDespesaView(ft.View):
         self.botao_salvar = ft.Button(content="Salvar",
                                             width=100,
                                             color="#ffffff",
-                                            bgcolor= "#a51966",
+                                            bgcolor= "#6495ED",
                                             on_click=self.incluir
                                             )
         

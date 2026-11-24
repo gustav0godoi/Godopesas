@@ -9,41 +9,47 @@ class LoginUsuarioView(ft.View):
         
         self.route = "/login"
         
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
         titulo = ft.Text(value="Faça Login",
                         font_family="Times New Roman",
                         size=40,
-                        color= "#a51966")
+                        color= "#6495ED")
         
         titulo02 = ft.Text(value="Bem Vindo!",
                                         font_family="Times New Roman",
                                         size=20,
-                                        color= "#a51966")
+                                        color= "#FFFFFF")
 
-        self.campo_usuario = ft.TextField(label= "Usuário")
+        self.campo_usuario = ft.TextField(label= "Usuário",
+                                        border_color= "#6495ED",
+                                        color= "#ffffff")
+        
         self.campo_senha = ft.TextField(label="Senha",
-                                           password= True,
-                                           can_reveal_password=True,
-                                           on_submit=self.Login)
+                                        color= "#ffffff",
+                                        border_color= "#6495ED",
+                                        password= True,
+                                        can_reveal_password=True,
+                                        on_submit=self.Login)
 
         botao_login = ft.Button(content="Entrar",
                                             width=150,
                                             color="#ffffff",
-                                            bgcolor= "#a51966",
+                                            bgcolor= "#6495ED",
                                             on_click= self.Login
                                             )
 
         texto01 = ft.Text(value="Ainda não tem uma conta?",
                                 font_family="Times New Roman",
-                                color= "#a51966")
+                                size= 15,
+                                color= "#FFFFFF")
 
         botao_cadastro = ft.Button(content="Se Cadastre!",
                                             width=150,
                                             color="#ffffff",
-                                            bgcolor= "#a51966",
+                                            bgcolor= "#6495ED",
                                             on_click=self.cadastro
                                             )
 

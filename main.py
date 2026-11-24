@@ -11,6 +11,7 @@ def main(pagina: ft.Page):
     pagina.window.width = 900
     pagina.window.height = 800
 
+
     def navegacao(e):
         item_clicado = e.control.selected_index     
         if item_clicado == 0:
@@ -27,6 +28,8 @@ def main(pagina: ft.Page):
             pagina.navigate("/login")
 
     barra_navegacao = ft.NavigationBar(
+        indicator_color= "#ffffff",
+        bgcolor= "#ADD8E6",
         destinations=[
             ft.NavigationBarDestination(icon=ft.Icons.HOME_OUTLINED, label="Início"),
             ft.NavigationBarDestination(icon=ft.Icons.CIRCLE, label="Categoria"),

@@ -9,25 +9,27 @@ class CadastroCategoriaView(ft.View):
         
         self.route = "/cadastro_cat"
         
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.titulo = ft.Text(value="Cadastrar Categoria",
                                 font_family="Times New Roman",
                                 size=30,
-                                color= "#a51966")
+                                color= "#6495ED")
 
         self.texto01 = ft.Text(value="Categorias Cadastradas:",
                                         font_family="Times New Roman",
                                         size=30,
-                                        color= "#a51966")
+                                        color= "#6495ED")
 
         self.botao_salvar = ft.Button(content="Salvar",
                                             width=100,
                                             color="#ffffff",
-                                            bgcolor= "#a51966",
+                                            bgcolor= "#6495ED",
                                             on_click= self.adicionar
                                             )
 
-        self.nome_cat = ft.TextField(label="Nome da Categoria")
+        self.nome_cat = ft.TextField(label="Nome da Categoria",
+                                     border_color= "#6495ED",
+                                     color= "#FFFFFF")
 
         self.lista_categorias = []
         self.coluna = ft.Column(controls = self.lista_categorias)
@@ -52,7 +54,7 @@ class CadastroCategoriaView(ft.View):
             delete = ft.FloatingActionButton(
                 icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
                 foreground_color="#ffffff",
-                bgcolor = "#a51966",
+                bgcolor = "#6495ED",
                 width=50,
                 height=35,
                 on_click=lambda e, id_cat=id_categoria, row=historico: self.excluir(e, id_cat, row)
@@ -82,7 +84,7 @@ class CadastroCategoriaView(ft.View):
             delete = ft.FloatingActionButton(
                 icon=ft.Icons.DELETE_OUTLINE_ROUNDED,
                 foreground_color="#ffffff",
-                bgcolor = "#a51966",
+                bgcolor = "#6495ED",
                 width=50, 
                 height=35,
                 key= categoria.get("id_categoria"),

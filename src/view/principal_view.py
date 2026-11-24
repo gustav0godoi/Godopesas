@@ -7,7 +7,7 @@ class Principal(ft.View):
         self.pagina = pagina
         self.route = "/principal"
         
-        self.bgcolor = "#facada"
+        self.bgcolor = "#87CEFA"
         self.vertical_alignment = "CENTER"
         self.horizontal_alignment = "CENTER"
 
@@ -19,7 +19,7 @@ class Principal(ft.View):
             value=f"Seja bem vindo(a) {nome_usuario}",
             font_family="Times New Roman",
             size=20,
-            color="#a51966"
+            color="#6495ED"
         )
 
         self.controls = [titulo]
